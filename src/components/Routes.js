@@ -17,7 +17,7 @@ var CommentTable = require('../components/Comment')
 var TestComponent = require('../components/TestComponent')
 var PresentDiamond = require('../components/PresentDiamond')
 var IdentityComponent = require('../components/IdentityComponent')
-var calculatorCompoent = require('../components/calculatorCompoent')
+var calculatorComponent = require('../components/calculatorComponent')
 class Routes extends React.Component{
     constructor(props){
         super(props)
@@ -35,7 +35,7 @@ class Routes extends React.Component{
                 <Route path="/present" component={PresentDiamond}/>
                 <Route path="/test" component={TestComponent}/>
                 <Route path="/identity" component={IdentityComponent}/>
-                <Route path="/calculator" component={calculatorCompoent}/>
+                <Route path="/calculator" component={calculatorComponent}/>
             </Route>
             <Route path="/order" components={Order}/>
         </Router>)

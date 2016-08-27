@@ -4,17 +4,23 @@
 import React from 'react'
 import {Component} from 'react'
 import {render} from 'react-dom'
+var connectedComponent = require('../redux/connectedComponent')
 
+var buttonMargin = 2;//按钮距离
+var buttonSize = 1;//按钮大小
 
 class Input extends Component{
     render(){
         var styles = {
             input:{
                 backgroundColor:'lightyellow',
-                margin:2
+                margin:2,
+                textAlign:'right'
             }
         }
-        return <input style={styles.input} type="text" placeholder="请进行输入"/>
+        return <div style={styles.input}>
+                 {this.props.result}
+            </div>
     }
 }
 
@@ -25,6 +31,7 @@ class buttonData{
         this.backgroundColor = backgroundColor;
     }
 }
+
 class ButtonRow extends Component{
     render(){
         var styles = {
@@ -38,7 +45,7 @@ class ButtonRow extends Component{
             <div style={styles.container}>
                 {
                     this.props.buttonDataArray.map((item, index)=>{
-                        return <ButtonData content={item.content} flex={item.flex} backgroundColor ={item.backgroundColor} key={index}/>
+                        return <ButtonData append={this.props.append}content={item.content} flex={item.flex} backgroundColor ={item.backgroundColor} key={index}/>
                             })}
             </div>
         )
@@ -47,19 +54,33 @@ class ButtonRow extends Component{
 
 
 class ButtonData extends Component{
+    append(){
+        this.props.append(this.props.content);
+    }
     render(){
-        var style = {
-            flex:this.props.flex,
-            paddingTop:3,
-            paddingBottom:3,
-            margin:2,
-            backgroundColor:this.props.backgroundColor
+        var styles = {
+            buttonBox:{
+                display:'flex',
+                flex:this.props.flex,
+                flexDirection:'column',
+                alignItems:"stretch",
+            },
+            item:{
+                backgroundColor:this.props.backgroundColor,
+                margin:buttonMargin,
+                padding:buttonSize,
+            }
         }
-        return <button style={style}>{this.props.content}</button>
+
+        return (
+                <div style={styles.buttonBox}>
+                    <button style={styles.item} onClick={this.append.bind(this)} >{this.props.content}</button>
+                </div>
+            )
     }
 }
 
-export default  class calculatorCompoent extends Component{
+class calculatorComponent extends Component{
     row1(){
         var row = [];
         row.push(new buttonData("7", 1, "lightgrey"))
@@ -92,26 +113,31 @@ export default  class calculatorCompoent extends Component{
         row.push(new buttonData("/", 1, "gold"))
         return row;
     }
+
+    append(value){
+        this.props.actions.append(value);
+    }
     render(){
         var styles = {
             container:{
                 display:'flex',
                 flexDirection:'column',
-                flex:1
+                flex:1,
+                margin:10
             }
         }
-
+        console.log("calculator.....", this.props);
         return (
             <div style={styles.container}>
-                <Input/>
-                <ButtonRow buttonDataArray={this.row1()}/>
-                <ButtonRow buttonDataArray={this.row2()}/>
-                <ButtonRow buttonDataArray={this.row3()}/>
-                <ButtonRow buttonDataArray={this.row4()}/>
+                <div style={{textAlign:'center', backgroundColor:'deepskyblue', color:'white', padding:3}} onClick={this.props.actions.clear}>计算器</div>
+                <Input result={this.props.calculator.result}/>
+                <ButtonRow append = {this.append.bind(this)} buttonDataArray={this.row1()}/>
+                <ButtonRow append = {this.append.bind(this)} buttonDataArray={this.row2()}/>
+                <ButtonRow append = {this.append.bind(this)} buttonDataArray={this.row3()}/>
+                <ButtonRow append = {this.append.bind(this)} buttonDataArray={this.row4()}/>
             </div>
-
         )
     }
 }
 
-module.exports = calculatorCompoent;
+module.exports = connectedComponent(calculatorComponent);

@@ -13,13 +13,15 @@ var mapStateToProps = function (state) {
     var choseOptions = state.choseOptions;
     var cartProductList = state.cartProductList;
     var order = state.order;
+    var calculator = state.calculator;
     return {
         items,
         filter,
         historyUrls,
         choseOptions,
         cartProductList,
-        order
+        order,
+        calculator
     };
 };
 

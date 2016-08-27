@@ -137,6 +137,17 @@ var actions = {
             id:id
         }
     },
+    append:function(value){
+        return {
+            type:'append',
+            value:value
+        }
+    },
+    clear:function () {
+        return {
+            type:'clear'
+        }
+    }
 }
 
 
