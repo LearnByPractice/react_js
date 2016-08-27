@@ -1,0 +1,15 @@
+
+
+.container{
+    background-color: cornflowerblue;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    color: beige;
+}
+
+
+.item{
+    color:lightgrey;
+    color:cornsilk;
+}

@@ -1,0 +1,8 @@
+{
+  "items": [
+    {"text":"dfs", "filter":true},
+    {"text":"dongfusong","filter":true},
+    {"text":"dongfupeng","filter":true}
+  ],
+  "filter":true
+}
