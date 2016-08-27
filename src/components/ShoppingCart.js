@@ -114,7 +114,8 @@ class Summarize extends  Component{
                 height:40,
                 justifyContent:'space-around',
                 alignItems:'center',
-                backgroundColor:'beige'
+                backgroundColor:'beige',
+                marginBottom:15,
             }
         }
         return (
@@ -162,8 +163,8 @@ class ShoppingCart extends Component{
                                             decrease={this.decrease.bind(this)} chose={this.chose.bind(this)}/>
                     })}
                 </div>
-                <Summarize totalPrice = {cartProductListData.getTotalPrice()} checked={cartProductListData.getCheckAll()}
-                           checkAll={this.checkAll.bind(this)} submitOrder={this.submitOrder.bind(this)}/>
+                    <Summarize totalPrice = {cartProductListData.getTotalPrice()} checked={cartProductListData.getCheckAll()}
+                               checkAll={this.checkAll.bind(this)} submitOrder={this.submitOrder.bind(this)}/>
             </div>
         )
     }

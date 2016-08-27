@@ -6,6 +6,7 @@
 import React from 'react'
 import {Component} from 'react'
 import {render} from 'react-dom'
+var FootLink = require('../components/FootLink')
 
 class TestBorder extends Component{
     render(){
@@ -131,6 +132,7 @@ export default  class TestComponent extends Component{
             }
         }
         return <div style={styles.container}>
+                <FootLink url={"/calculator"} name="计算器" type="link"/>
                 <div style= {{overflow: 'auto'}}>
                     <TestBorder/>
                     <CommentItem/>
