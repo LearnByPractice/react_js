@@ -126,7 +126,7 @@ class calculatorComponent extends Component{
                 margin:10
             }
         }
-        console.log("calculator.....", this.props);
+        // console.log("calculator.....", this.props);
         return (
             <div style={styles.container}>
                 <div style={{textAlign:'center', backgroundColor:'deepskyblue', color:'white', padding:3}} onClick={this.props.actions.clear}>计算器</div>
