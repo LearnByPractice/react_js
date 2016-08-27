@@ -34,6 +34,7 @@ class Footer extends Component{
                 <FootLink url={"/comment"} name="评论" type="link"/>
                 <FootLink url={"/present"} name="打赏" type="link"/>
                 <FootLink url={"/test"} name="测试" type="link"/>
+                <FootLink url={"/identity"} name="会员" type="link"/>
             </div>
         )
     }
